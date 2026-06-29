@@ -5,7 +5,7 @@ let socket;
 export const initSocket = (token)=>
 {
     if(!socket){
-        socket = io("http://localhost:8080/", {
+        socket = io(import.meta.env.VITE_SERVER_URL, {
       withCredentials: true,
       auth: { token },
     });
