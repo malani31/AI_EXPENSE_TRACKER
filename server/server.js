@@ -49,6 +49,6 @@ const server =  createServer(app);
 const io = initSocket(server);
 
 app.set('io',io)
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`Server started on port:${port}`);
 })
