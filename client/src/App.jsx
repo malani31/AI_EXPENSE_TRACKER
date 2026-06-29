@@ -6,12 +6,12 @@ import Dashboard from "./pages/Dashboard.jsx";
 import ExpenseList from './pages/ExpenseList';
 import Reports from "./pages/Reports.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
-import { use, useEffect } from "react";
+import {  useEffect } from "react";
 import { useDispatch,useSelector  } from "react-redux";
 import { addNotification } from "./redux/slices/notificationSlice.js";
 import ProtectedRoutes from './components/ProtectRoutes';
 
-import { initSocket,getSocket } from "./socket.js";
+import { initSocket } from "./socket.js";
 
 function App() {
   const {user}=useSelector((state)=>state.auth);
