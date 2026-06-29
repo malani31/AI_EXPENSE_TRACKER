@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTransaction, uploadReceipt } from '../redux/slices/transactionSlice';
+import { addTransaction, uploadReceipt } from '../redux/slices/transactionSlices';
 import { Banknote, CloudUpload, X } from "lucide-react";
 import { useEffect } from 'react';
 

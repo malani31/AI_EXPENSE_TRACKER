@@ -1,13 +1,35 @@
-import { useEffect,useState } from "react";
-// import Stats from '../components/dashboard/Stats';
-// import RecentTransactionTable from '../components/dashboard/RecentTransactionTable';
+// import { useEffect,useState } from "react";
+import Stats from '../components/dashboard/Stats';
+import SpendingTrendChart from '../components/charts/SpendingTrendChart.jsx'
+import CategoryBreakdownChart from '../components/charts/CategoryBreakDownChart.jsx';
+import RecentTransactionTable from '../components/dashboard/RecentTransactionTable.jsx';
+// import  {fetchSpendingTrend,fetchCategoryBreakdown}from '../api/charts';
+import { useSelector } from "react-redux";
 import Navbar from '../components/Navbar.jsx';
+import AiInsightsCards from "../components/reports/AiInsightsCars";
+
 
 function Dashboard(){
+
+  const { user } = useSelector((state) => state.auth);
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+
     return (
         <div className="min-h-screen bg-gray-50">
-             <Navbar/>
+        <Navbar />
+        <div className="md:px-16 px-2 mt-4">
+          <h2 className="md:text-2xl text-lg font-bold mb-4">Dashboard</h2>
+          <Stats userId={user._id} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            <SpendingTrendChart userId={user._id} month={month} year={year} />
+            <CategoryBreakdownChart userId={user._id} month={month} year={year} />
+          </div>
+          <AiInsightsCards userId={user._id} month={month} year={year} />
+          <RecentTransactionTable />
         </div>
+      </div>
     )
 }
 

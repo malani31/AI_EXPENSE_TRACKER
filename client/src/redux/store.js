@@ -6,7 +6,7 @@ import notificationSettingsSlice from './slices/notificationSettingsSlice';
 import notificationSlice from './slices/notificationSlice';
 import profileSlice from './slices/profileSlice';
 import reportSlice from './slices/reportSlice';
-import  transactionSlice from './slices/transactionSlice';
+import  transactionSlice from './slices/transactionSlices';
 
 const store = configureStore({
     reducer:{
@@ -15,7 +15,7 @@ const store = configureStore({
         dashboard:dashboardSlice,
         budget:budgetSlice,
         profile:profileSlice,
-        report:reportSlice,
+        reports:reportSlice,
         notifications:notificationSlice,
         notificationSettings:notificationSettingsSlice,
     }

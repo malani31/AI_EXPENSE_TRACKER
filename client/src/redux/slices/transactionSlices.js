@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addTransactionAPI, uploadReceiptAPI, getTransactionAPI, deleteTransactionAPI, updateTransactionAPI } from "../../api/transaction";
+import { addTransactionAPI, uploadReceiptAPI, getTransactionsAPI, deleteTransactionAPI, updateTransactionAPI } from "../../api/transaction";
 
 export const addTransaction = createAsyncThunk(
   "transaction/add",
@@ -29,7 +29,7 @@ export const fetchTransactions = createAsyncThunk(
   "transaction/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await getTransactionAPI();
+      const { data } = await getTransactionsAPI();
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -102,8 +102,9 @@ export const transactionSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchTransactions.fulfilled, (state, action) => {
+        console.log("fetch",action.payload);
         state.loading = false;
-        state.transactions = action.payload;
+        state.transactions = action.payload.transaction;
       })
       .addCase(fetchTransactions.rejected, (state, action) => {
         state.loading = false;

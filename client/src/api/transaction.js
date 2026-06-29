@@ -12,6 +12,6 @@ export const uploadReceiptAPI = (file) =>{
     });
 };
 
-export const getTransactionAPI = () =>API.get("transactions");
+export const getTransactionsAPI = () =>API.get("transactions");
 export const deleteTransactionAPI= (id) => API.delete(`transactions/${id}`);
 export const updateTransactionAPI= (id,updatedata) =>API.put(`transaction/${id}`,updatedata);
